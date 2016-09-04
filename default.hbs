@@ -57,6 +57,7 @@
       GHOSTIUM.haveGA = typeof ga_ua !== 'undefined' && ga_ua !== 'UA-XXXXX-X';
       GHOSTIUM.haveDisqus = typeof disqus_shortname !== 'undefined' && disqus_shortname !== 'example';
       GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
+      GHOSTIUM.haveFB = typeof fb_id !== 'undefined' && fb_id !== 'XXXXXXXXXXXXXXX'
     </script>
 
     <script src="{{asset 'js/head-scripts.min.js'}}"></script>
@@ -102,21 +103,23 @@
         }());
       }
 
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '284439148605304',
-          xfbml      : true,
-          version    : 'v2.7'
-        });
-      };
+      if(GHOSTIUM.haveFB){
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '284439148605304',
+            xfbml      : true,
+            version    : 'v2.7'
+          });
+        };
 
-      (function(d, s, id){
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
+        (function(d, s, id){
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+      }
     </script>
   </body>
 </html>
