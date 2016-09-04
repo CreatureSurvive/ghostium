@@ -92,7 +92,7 @@
     <!-- build:js /assets/js/foot-scripts.min.js -->
     <script src="/assets/_components/fastclick/lib/fastclick.js"></script>
 
-    <!-- PrismJS core, aditional languages and plugins -->
+    <!-- PrismJS core, additional languages and plugins -->
     <script src="/assets/_components/prism/prism.js"></script>
     <script src="/assets/_components/prism/components/prism-aspnet.js"></script>
     <script src="/assets/_components/prism/components/prism-bash.js"></script>
@@ -115,10 +115,16 @@
     <script src="/assets/_components/prism/components/prism-scss.js"></script>
     <script src="/assets/_components/prism/components/prism-sql.js"></script>
     <script src="/assets/_components/prism/plugins/autolinker/prism-autolinker.js"></script>
+
+    <!--custom-->
     <script src="/assets/_components/jquery/jquery.js"></script>
     <script src="/assets/_components/jquery-pjax/jquery.pjax.js"></script>
+    <script src="/assets/_components/reading-time/src/readingTime.js"></script>
+
+    <!--ghostium-->
     <script src="/assets/js/drawer.js"></script>
     <script src="/assets/js/imageLoader.js"></script>
+    <script src="/assets/js/read-time.js"></script>
     <script src="/assets/js/scripts.js"></script>
     <!-- endbuild -->
 
@@ -141,6 +147,22 @@
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
         }());
       }
+
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '284439148605304',
+          xfbml      : true,
+          version    : 'v2.7'
+        });
+      };
+
+      (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
     </script>
   </body>
 </html>

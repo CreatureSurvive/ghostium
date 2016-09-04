@@ -36,8 +36,11 @@
   border: 0;
   text-align: center;
   vertical-align: middle;
-  background-color: $drawer-background-color;
-  color: $background-color;
+  background-color: transparent;
+  color: $drawer-background-color;
+  -webkit-text-fill-color: $background-color;
+  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-color: $drawer-background-color;
   transition: opacity .3s linear;
 
   &:hover,
@@ -144,7 +147,7 @@
       vertical-align: sub;
       text-align: left;
       font-size: 22px;
-      width: 1.2857142857142858em; //fixed width icon
+      width: 1.3em; //fixed width icon
     }
   }
 }

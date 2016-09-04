@@ -1,60 +1,53 @@
-(function() {
-  var module = {
-    init: function() {
-      module.post();
-      module.list();
-    },
+var ReadTime = (function ($) {
 
-    config: {
-      selector: '.post-header, .post-body'
-    },
+    'use strict';
 
-    post: function() {
-      var $post = $('.post:not(.post-item)');
+    var module = {
+      init: function() {
+        $('.post').each(function() {
+          var $readingTimeTarget = $('<span/>');
 
-      if ($post.length && !$('.metabar-item--reading-time').length) {
-        var $side        = $('.metabar__side--right'),
-            $social      = $side.find('.metabar-item--social'),
-            $readingTime = $('<span/>', {'class': 'metabar-item metabar-item--reading-time'});
+          $(this)
+            .find('.post-meta-item-comments')
+              .before(
+                ' ',
+                $('<li/>', {'class': 'post-meta-item post-meta-item-reading-time'}).append(
+                  $('<i/>', {'class': 'fa fa-clock-o'}), ' ', $readingTimeTarget, ' ', 'read'
+                ),
+                ' '
+              )
+            .end()
 
-        if ($social.length) {
-          $social.before($readingTime);
-        } else {
-          $side.append($readingTime);
-        }
+            .readingTime({
+              readingTimeTarget: $readingTimeTarget
+            })
+          ;
+        });
 
-        $post.find(module.config.selector).readingTime({
-          readingTimeTarget: $readingTime
+        $('.post-item').each(function() {
+          var $readingTimeTarget = $('<span/>');
+
+          $(this)
+            .find('.post-item-meta-item-comments')
+              .before(
+                ' ',
+                $('<li/>', {'class': 'post-item-meta-item post-item-meta-item-reading-time'}).append(
+                  $('<i/>', {'class': 'fa fa-clock-o'}), ' ', $readingTimeTarget, ' ', 'read'
+                ),
+                ' '
+              )
+            .end()
+
+            .readingTime({
+              readingTimeTarget: $readingTimeTarget,
+              remotePath: $(this).find('.post-item-title a').attr('href'),
+              remoteTarget: '.post'
+            })
+          ;
         });
       }
-    },
+    };
 
-    list: function() {
-      $('.post-item').each(function() {
-        var $list = $(this).find('.post-item-meta-list');
+    return { init: module.init };
 
-        if (!$list.find('.post-item-meta-item-reading-time').length) {
-          var $target      = $('<span/>'),
-              $comments    = $list.find('.post-item-meta-item-comments'),
-              $readingTime = $('<li/>', {'class': 'post-item-meta-item post-item-meta-item-reading-time'}).append(
-                $('<i/>', {'class': 'fa fa-book'}), ' ', $target
-              );
-
-          if ($comments.length) {
-            $comments.before(' ',  $readingTime, ' ');
-          } else {
-            $list.append(' ',  $readingTime, ' ');
-          }
-
-          $(this).readingTime({
-            readingTimeTarget: $target,
-            remotePath: $(this).find('.post-item-title a').attr('href'),
-            remoteTarget: module.config.selector
-          });
-        }
-      });
-    }
-  };
-
-  $(document).on('ready pjax:end', module.init);
-}());
+}(jQuery));

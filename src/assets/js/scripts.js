@@ -1,4 +1,4 @@
-/* global FastClick: false, DISQUS: false, DISQUSWIDGETS: true, disqus_identifier:false, ga:false, Drawer: false, ImageLoader: false, Prism: false */
+/* global FastClick: false, DISQUS: false, DISQUSWIDGETS: true, disqus_identifier:false, ga:false, Drawer: false, ImageLoader: false, Prism: false, ReadTime: false */
 (function ($, window, document, undefined) {
 
   'use strict';
@@ -23,6 +23,10 @@
     // Drawer bindings
     // =================
     Drawer.init();
+
+    // ReadTime bindings
+    // ===============
+    ReadTime.init();
 
     // PrismJS handler
     // =================
@@ -116,6 +120,7 @@
         $('[data-load-image]', $content).each(function() {
           ImageLoader.load($(this));
         });
+        ReadTime.init();
       });
 
       var _pjaxOptions = {
@@ -171,8 +176,10 @@
             600, 600);
           break;
         case 'share-facebook':
+            
           _openWindow(
-            'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(location.href),
+            'https://www.facebook.com/dialog/share?app_id=284439148605304&display=popup&href=' + encodeURIComponent(location.href) + 
+            '&redirect_uri=' + encodeURIComponent(location.href),
             436, 626);
           break;
         case 'share-twitter':
