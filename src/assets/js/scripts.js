@@ -180,7 +180,7 @@
           _openWindow(
             'https://www.facebook.com/dialog/share?app_id=284439148605304&display=popup&href=' + encodeURIComponent(location.href) + 
             '&redirect_uri=' + encodeURIComponent(location.href),
-            436, 626);
+            400, 500);
           break;
         case 'share-twitter':
           _openWindow(
