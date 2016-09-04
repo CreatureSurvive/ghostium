@@ -18,10 +18,10 @@
     "src/assets/_components"
   ],
   "devDependencies": {
-    "fastclick": "~0.6.10",
-    "font-awesome": "~4.1.0",
+    "fastclick": "~1.0.6",
+    "font-awesome": "~4.6.3",
     "prism": "gh-pages",
-    "pace": "~0.5.1",
-    "jquery-pjax": "master"
+    "pace": "~1.0.2",
+    "jquery-pjax": "1.9.6"
   }
 }
