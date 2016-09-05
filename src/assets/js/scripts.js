@@ -173,7 +173,7 @@
         case 'share-gplus':
           _openWindow(
             'https://plus.google.com/share?url=' + encodeURIComponent(location.href),
-            600, 600);
+            600, 500);
           break;
         case 'share-facebook':
             
@@ -185,8 +185,13 @@
         case 'share-twitter':
           _openWindow(
             'https://twitter.com/share?url=' + encodeURIComponent(location.href) + '&text=' + encodeURIComponent(document.title),
-            440, 550);
+            400, 500);
           break;
+        case 'share-reddit':
+        _openWindow(
+          'http://www.reddit.com/submit?url=' + encodeURIComponent(location.href) + '&title=' + encodeURIComponent(document.title),
+          400, 500);
+        break;
       }
 
       return false;
